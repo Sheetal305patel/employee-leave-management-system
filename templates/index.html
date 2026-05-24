@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Employee Leave Management System</title>
+
+    <style>
+
+        body{
+
+            font-family:Arial;
+
+            background:#0f172a;
+
+            display:flex;
+
+            justify-content:center;
+
+            align-items:center;
+
+            height:100vh;
+
+            margin:0;
+        }
+
+        .container{
+
+            background:white;
+
+            width:400px;
+
+            padding:30px;
+
+            border-radius:15px;
+
+            box-shadow:0px 0px 20px rgba(0,0,0,0.3);
+        }
+
+        h1{
+
+            text-align:center;
+
+            color:#2563eb;
+
+            margin-bottom:20px;
+        }
+
+        input, textarea{
+
+            width:100%;
+
+            padding:12px;
+
+            margin-top:10px;
+
+            border-radius:8px;
+
+            border:1px solid #ccc;
+
+            font-size:15px;
+        }
+
+        button{
+
+            width:100%;
+
+            padding:12px;
+
+            margin-top:20px;
+
+            border:none;
+
+            background:#2563eb;
+
+            color:white;
+
+            border-radius:8px;
+
+            font-size:16px;
+
+            cursor:pointer;
+        }
+
+        button:hover{
+
+            background:#1d4ed8;
+        }
+
+        .success{
+
+            background:#dcfce7;
+
+            color:green;
+
+            padding:10px;
+
+            border-radius:8px;
+
+            margin-bottom:15px;
+
+            text-align:center;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Leave Management System</h1>
+
+    {% if success %}
+
+        <div class="success">
+
+            Leave Applied Successfully 😎
+
+        </div>
+
+    {% endif %}
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <input 
+            type="text"
+            name="employee_name"
+            placeholder="Enter Employee Name"
+            required
+        >
+
+        <input 
+            type="email"
+            name="employee_email"
+            placeholder="Enter Email"
+            required
+        >
+
+        <textarea
+            name="leave_reason"
+            placeholder="Enter Leave Reason"
+            rows="4"
+            required
+        ></textarea>
+
+        <br><br>
+
+        <label>From Date</label>
+
+        <input type="date" name="from_date" required>
+
+        <br><br>
+
+        <label>To Date</label>
+
+        <input type="date" name="to_date" required>
+
+        <button type="submit">
+
+            Apply Leave
+
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+</html>
